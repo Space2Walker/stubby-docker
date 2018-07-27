@@ -29,7 +29,7 @@ RUN set -e -x && \
       $BUILD_DEPS && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
-FROM debian:stretch
+FROM debian:stretch as inter
 LABEL maintainer="Matthew Vance"
 
 EXPOSE 8053/udp
@@ -63,6 +63,12 @@ RUN set -e -x && \
     apt-get purge -y --auto-remove \
       $BUILD_DEPS && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
+
+FROM debian:stretch
+
+COPY --from=inter /opt/openssl /opt/openssl
+
+COPY --from=inter /opt/stubby /opt/stubby
 
 WORKDIR /opt/stubby
 
