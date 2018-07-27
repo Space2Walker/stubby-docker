@@ -48,7 +48,7 @@ RUN set -e -x && \
       libidn11 \
       libuv1 \
       libyaml-0-2 && \
-    git clone https://github.com/getdnsapi/getdns.git --branch develop && \
+    git clone https://github.com/getdnsapi/getdns.git --branch master && \
     cd getdns && \
     git submodule update --init && \
     libtoolize -ci && \
