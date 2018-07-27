@@ -30,7 +30,6 @@ RUN set -e -x && \
     rm -rf /tmp/* /var/tmp/* /var/lib/apt/lists/*
 
 FROM debian:stretch 
-LABEL maintainer="Matthew Vance"
 
 EXPOSE 8053/udp
 
@@ -43,6 +42,7 @@ RUN set -e -x && \
     DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
       $BUILD_DEPS \
       dns-root-data \
+      dnsutils \
       libev4 \
       libevent-core-2.0.5 \
       libidn11 \
@@ -71,5 +71,7 @@ ENV PATH /opt/stubby/bin:$PATH
 USER stubby:stubby
 
 COPY stubby.yml /opt/stubby/etc/stubby/stubby.yml
+
+HEALTHCHECK CMD dig @127.0.0.1 -p 8053 google.com || exit 1
 
 CMD ["/opt/stubby/bin/stubby"]
