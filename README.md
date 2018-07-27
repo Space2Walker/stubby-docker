@@ -67,7 +67,7 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* [Pi-Hole] (https://pi-hole.net/)
+* [Pi-Hole](https://pi-hole.net/)
 * [getdns](https://github.com/getdnsapi/stubby)
 * [Matthew Vance](https://github.com/MatthewVance/stubby-docker)
 * [Docker](https://www.docker.com/)
