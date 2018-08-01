@@ -74,4 +74,4 @@ COPY stubby.yml /opt/stubby/etc/stubby/stubby.yml
 
 HEALTHCHECK CMD dig @127.0.0.1 -p 8053 google.com || exit 1
 
-CMD ["/opt/stubby/bin/stubby"]
+CMD ["/opt/stubby/bin/stubby -l"]
